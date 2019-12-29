@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {DialogContent, DialogFooter} from '../FoodDialog/foodDialog.style';
+import {Title} from '../../Styles/title';
 
 export const OrderContainer = styled.div`
   display: flex;
@@ -18,6 +19,16 @@ export const OrderContainer = styled.div`
 export const OrderContent = styled(DialogContent)`
   height: 100%;
   padding: 20px;
+`;
+
+
+export const OrderItemContainer = styled.div`
+  padding: 10px 0;
+  border-bottom: 1px solid grey;
+`;
+
+export const OrderItem = styled(Title)`
+  padding: 10px 0;
 `;
 
 export const OrderFooter = styled(DialogFooter)``;

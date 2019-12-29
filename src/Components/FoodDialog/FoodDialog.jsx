@@ -11,7 +11,11 @@ import {
 
 const FoodDialog = ({openFood, setOpenFood, orders, setOrders}) => {
   const onHandleClick = () => {
-    setOrders([...orders, openFood.name]);
+    const order = openFood.name;
+    const newArr = orders.concat(order);
+
+    setOrders(newArr);
+    console.log(orders);
     setOpenFood();
   };
 
