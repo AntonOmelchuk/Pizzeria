@@ -1,6 +1,6 @@
 import React from 'react';
 import {MenuContainer} from './menu.style';
-import {foods} from './dataFood';
+import {foods, formatPrice} from './dataFood';
 import {FoodItem, FoodGrid, FoodLabel} from './foodGrid';
 
 const Menu = ({setOpenFood}) => {
@@ -16,7 +16,10 @@ const Menu = ({setOpenFood}) => {
                 key={food.id}
                 onClick={() => setOpenFood(food)}
               >
-                <FoodLabel>{food.name}</FoodLabel>
+                <FoodLabel>
+                  <div>{food.name}</div>
+                  <div>{formatPrice(food.price)}</div>
+                </FoodLabel>
               </FoodItem>
             ))}
           </FoodGrid>

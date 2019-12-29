@@ -8,14 +8,15 @@ import {
   DialogFooter,
   DialogOverlay,
 } from './foodDialog.style';
+import {formatPrice} from '../Menu/dataFood';
 
 const FoodDialog = ({openFood, setOpenFood, orders, setOrders}) => {
   const onHandleClick = () => {
-    const order = openFood.name;
-    const newArr = orders.concat(order);
+    const order = {
+      ...openFood,
+    };
 
-    setOrders(newArr);
-    console.log(orders);
+    setOrders([...orders, order]);
     setOpenFood();
   };
 
@@ -28,7 +29,9 @@ const FoodDialog = ({openFood, setOpenFood, orders, setOrders}) => {
         </DialogBanner>
         <DialogContent />
         <DialogFooter>
-          <ConfirmButton onClick={onHandleClick}>Add to order</ConfirmButton>
+          <ConfirmButton onClick={onHandleClick}>
+            Add to order: {formatPrice(openFood.price)}
+          </ConfirmButton>
         </DialogFooter>
       </DialogContainer>
     </>

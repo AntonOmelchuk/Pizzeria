@@ -1,31 +1,38 @@
+export const formatPrice = price => {
+  return price.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+};
+
 const foodItems = [
   {
     id: 1,
     name: 'Cheese Pizza',
     img: '/img/pizza.png',
     section: 'Pizza',
-    price: 1,
+    price: 10,
   },
   {
     id: 2,
     name: 'Pepperoni Pizza',
     img: '/img/pizza2.jpeg',
     section: 'Pizza',
-    price: 1.5,
+    price: 15,
   },
   {
     id: 3,
     name: 'Chicken Pizza',
     img: '/img/chicken-pizza.jpeg',
     section: 'Pizza',
-    price: 2,
+    price: 20,
   },
   {
     id: 4,
     img: '/img/healthy-pizza.jpeg',
     name: 'Veggie Pizza',
     section: 'Pizza',
-    price: 2,
+    price: 20,
   },
   {
     id: 5,

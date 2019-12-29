@@ -7,8 +7,9 @@ import {
   OrderItemContainer,
 } from './order.style';
 import {ConfirmButton} from '../FoodDialog/foodDialog.style';
+import {formatPrice} from '../Menu/dataFood';
 
-const Order = ({orders}) => {
+const Order = React.memo(({orders}) => {
   return (
     <OrderContainer>
       {!orders.length ? (
@@ -16,9 +17,14 @@ const Order = ({orders}) => {
       ) : (
         <OrderContent>
           Your orders:
-          {orders.map(order => (
-            <OrderItemContainer>
-              <OrderItem>{order}</OrderItem>
+          {orders.map((order, index) => (
+            <OrderItemContainer key={order.id}>
+              <OrderItem>
+                <div>{index + 1}</div>
+                <div>{order.name}</div>
+                <div />
+                <div>{formatPrice(order.price)}</div>
+              </OrderItem>
             </OrderItemContainer>
           ))}
         </OrderContent>
@@ -28,5 +34,6 @@ const Order = ({orders}) => {
       </OrderFooter>
     </OrderContainer>
   );
-};
+});
+
 export default Order;
