@@ -6,21 +6,21 @@ import {FoodItem, FoodGrid, FoodLabel} from './foodGrid';
 const Menu = ({setOpenFood}) => {
   return (
     <MenuContainer>
-      {Object.entries(foods).map(([section, foods]) => (
-        <>
+      {Object.entries(foods).map(([section, foods], index) => (
+        <React.Fragment key={index}>
           <h1>{section}</h1>
           <FoodGrid>
             {foods.map(food => (
               <FoodItem
-                key={food.name}
                 img={food.img}
+                key={food.id}
                 onClick={() => setOpenFood(food)}
               >
                 <FoodLabel>{food.name}</FoodLabel>
               </FoodItem>
             ))}
           </FoodGrid>
-        </>
+        </React.Fragment>
       ))}
     </MenuContainer>
   );
