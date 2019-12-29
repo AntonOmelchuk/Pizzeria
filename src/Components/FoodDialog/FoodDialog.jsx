@@ -9,33 +9,44 @@ import {
   DialogOverlay,
 } from './foodDialog.style';
 import {formatPrice} from '../Menu/dataFood';
+import QuantityInput from '../QuantityInput';
+import useQuantity from '../../Hooks/useQuantity';
 
-const FoodDialog = ({openFood, setOpenFood, orders, setOrders}) => {
+export const getTotalPrice = order => order.price * order.quantity;
+
+const FoodDialogContainer = ({openFood, setOpenFood, orders, setOrders}) => {
+  const quantity = useQuantity(openFood && openFood.quantity);
+
+  const order = {
+    ...openFood,
+    quantity: quantity.value,
+  };
+
   const onHandleClick = () => {
-    const order = {
-      ...openFood,
-    };
-
     setOrders([...orders, order]);
     setOpenFood();
   };
 
-  return openFood ? (
+  return (
     <>
       <DialogOverlay onClick={() => setOpenFood()} />
       <DialogContainer>
         <DialogBanner img={openFood.img}>
           <DialogBannerLabel>{openFood.name}</DialogBannerLabel>
         </DialogBanner>
-        <DialogContent />
+        <DialogContent>{<QuantityInput quantity={quantity} />}</DialogContent>
         <DialogFooter>
           <ConfirmButton onClick={onHandleClick}>
-            Add to order: {formatPrice(openFood.price)}
+            Add to order: {formatPrice(getTotalPrice(order))}
           </ConfirmButton>
         </DialogFooter>
       </DialogContainer>
     </>
-  ) : null;
+  );
 };
 
-export default FoodDialog;
+export const FoodDialog = props => {
+  if (!props.openFood) return null;
+
+  return <FoodDialogContainer {...props} />;
+};

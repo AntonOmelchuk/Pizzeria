@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {DialogContent, DialogFooter} from '../FoodDialog/foodDialog.style';
 import {Title} from '../../Styles/title';
+import {CustomButton} from '../../Styles/customButton';
 
 export const OrderContainer = styled.div`
   display: flex;
@@ -29,8 +30,10 @@ export const OrderItemContainer = styled.div`
 export const OrderItem = styled(Title)`
   padding: 10px 0;
   display: grid;
-  grid-template-columns: 20px 150px 20px 60px;
-  justify-content: space-between; 
+  grid-template-columns: 33px 150px 20px 60px;
+  justify-content: space-between;
 `;
+
+export const CheckoutButton = styled(CustomButton)``;
 
 export const OrderFooter = styled(DialogFooter)``;

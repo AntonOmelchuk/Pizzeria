@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {FoodLabel} from '../Menu/foodGrid';
-import {Title} from '../../Styles/title';
+import {CustomButton} from '../../Styles/customButton';
 
 export const DialogContainer = styled.div`
   display: flex;
@@ -35,6 +35,7 @@ export const DialogBannerLabel = styled(FoodLabel)`
 
 export const DialogContent = styled.div`
   min-height: 100px;
+  padding: 0 40px;
   overflow: auto;
 `;
 
@@ -45,16 +46,7 @@ export const DialogFooter = styled.div`
   box-shadow: 0 -4px 6px 0 grey;
 `;
 
-export const ConfirmButton = styled(Title)`
-  margin: 10px;
-  padding: 10px;
-  width: 200px;
-  height: 20px;
-  border-radius: 5px;
-  background-color: rgb(244, 67, 54);
-  text-align: center;
-  cursor: pointer;
-`;
+export const ConfirmButton = styled(CustomButton)``;
 
 export const DialogOverlay = styled.div`
   position: fixed;
