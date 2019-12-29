@@ -1,4 +1,4 @@
-export const foodItems = [
+const foodItems = [
   {
     name: 'Cheese Pizza',
     img: '/img/pizza.png',
@@ -42,10 +42,12 @@ export const foodItems = [
     section: 'Sides',
     price: 1,
   },
-  // {
-  //   price: 1,
-  //   name: "Soda",
-  //   section: "Drinks",
-  //   choices: ["Coke", "Sprite", "Root Beer"]
-  // }
 ];
+
+export const foods = foodItems.reduce((res, food) => {
+  if (!res[food.section]) {
+    res[food.section] = [];
+  }
+  res[food.section].push(food);
+  return res;
+}, {});

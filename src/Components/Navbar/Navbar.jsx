@@ -1,13 +1,13 @@
 import React from 'react';
 import {Logo, NavbarContainer} from './navbar.style';
-import logoImage from '../../assets/slice-of-pizza.png';
 
 const Navbar = () => {
   return (
     <NavbarContainer>
       <Logo>
-        <span>
-          RockItPizza <img src={logoImage} alt='Logo' />
+        RockItPizza{' '}
+        <span role='img' aria-label='pizza slice'>
+          🍕
         </span>
       </Logo>
     </NavbarContainer>

@@ -17,6 +17,7 @@ export const FoodLabel = styled.div`
 export const FoodItem = styled(Title)`
   height: 153px;
   padding: 10px;
+  margin: 5px 0 0 0;
 
   font-size: 21px;
 
@@ -24,11 +25,15 @@ export const FoodItem = styled(Title)`
   background-position: center;
   background-size: cover;
   border-radius: 9px;
-  box-shadow: -7px -7px 10px 0 grey;
+  box-shadow: 0 0 2px 0 grey;
   filter: contrast(75%);
+
+  transition: box-shadow 0.1s, margin 0.1s, filter 0.1s;
 
   &:hover {
     cursor: pointer;
-    opacity: 0.72;
+    filter: contrast(100%);
+    box-shadow: 0 5px 12px 0 grey;
+    margin: 0 0 5px 0;
   }
 `;
