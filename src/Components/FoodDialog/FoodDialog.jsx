@@ -9,7 +9,12 @@ import {
   DialogOverlay,
 } from './foodDialog.style';
 
-const FoodDialog = ({openFood, setOpenFood}) => {
+const FoodDialog = ({openFood, setOpenFood, orders, setOrders}) => {
+  const onHandleClick = () => {
+    setOrders([...orders, openFood.name]);
+    setOpenFood();
+  };
+
   return openFood ? (
     <>
       <DialogOverlay onClick={() => setOpenFood()} />
@@ -19,7 +24,7 @@ const FoodDialog = ({openFood, setOpenFood}) => {
         </DialogBanner>
         <DialogContent />
         <DialogFooter>
-          <ConfirmButton>Add to order</ConfirmButton>
+          <ConfirmButton onClick={onHandleClick}>Add to order</ConfirmButton>
         </DialogFooter>
       </DialogContainer>
     </>

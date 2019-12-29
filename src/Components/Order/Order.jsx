@@ -2,10 +2,16 @@ import React from 'react';
 import {OrderContainer, OrderContent, OrderFooter} from './order.style';
 import {ConfirmButton} from '../FoodDialog/foodDialog.style';
 
-const Order = () => {
+const Order = ({orders}) => {
   return (
     <OrderContainer>
-      <OrderContent>Your order is empty.</OrderContent>
+      <OrderContent>
+        {!orders.length ? (
+          'Your order is empty.'
+        ) : (
+          <div>You have {orders.length} orders</div>
+        )}
+      </OrderContent>
       <OrderFooter>
         <ConfirmButton>Checkout</ConfirmButton>
       </OrderFooter>
