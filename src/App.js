@@ -3,6 +3,7 @@ import React from 'react';
 import {GlobalStyle} from './globalStyle';
 import Navbar from './Components/Navbar/Navbar';
 import Banner from './Components/Banner/Banner';
+import Menu from './Components/Menu/Menu';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <GlobalStyle />
       <Navbar />
       <Banner />
+      <Menu />
     </>
   );
 };

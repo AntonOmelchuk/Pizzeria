@@ -7,6 +7,7 @@ export const NavbarContainer = styled.div`
   padding: 10px;
   position: fixed;
   width: 100%;
+  z-index: 999;
 `;
 export const Logo = styled(Title)`
   font-size: 20px;
