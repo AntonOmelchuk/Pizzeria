@@ -1,15 +1,15 @@
 import React from 'react';
 
 import {GlobalStyle} from './globalStyle';
-import Navbar from './Navbar/Navbar';
+import Navbar from './Components/Navbar/Navbar';
+import Banner from './Components/Banner/Banner';
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
       <Navbar />
-      <h1>Pizza</h1>
-      <h3>Hello Slice Pizza</h3>
+      <Banner />
     </>
   );
 };
