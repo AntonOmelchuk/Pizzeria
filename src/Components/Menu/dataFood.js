@@ -62,6 +62,21 @@ const foodItems = [
     section: 'Sides',
     price: 1,
   },
+  {
+    id: 9,
+    img: '/img/chicken-fingers.jpeg',
+    name: 'Chicken Fingers',
+    section: 'Sides',
+    price: 4,
+  },
+  {
+    id: 10,
+    img: '/img/drinks.jpg',
+    price: 1,
+    name: 'Drinks',
+    section: 'Drinks',
+    choices: ['Coca-Cola', 'Fanta', 'Sprite'],
+  },
 ];
 
 export const foods = foodItems.reduce((res, food) => {

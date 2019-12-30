@@ -13,6 +13,8 @@ import QuantityInput from '../QuantityInput/QuantityInput';
 import useQuantity from '../../Hooks/useQuantity';
 import Toppings from '../Toppings/Toppings';
 import {useToppings} from '../../Hooks/useToppings';
+import {useChoice} from '../../Hooks/useChoice';
+import DrinksChoice from '../DrinksChoice/DrinksChoice';
 
 export const getTotalPrice = order => {
   const toppingsPrice = 0.5;
@@ -24,11 +26,13 @@ export const getTotalPrice = order => {
 const FoodDialogContainer = ({openFood, setOpenFood, orders, setOrders}) => {
   const quantity = useQuantity(openFood && openFood.quantity);
   const toppings = useToppings(openFood.toppings);
+  const choiceDrink = useChoice(openFood.choice);
 
   const order = {
     ...openFood,
     quantity: quantity.value,
     toppings: toppings.toppings,
+    choice: choiceDrink.choice,
   };
 
   const onHandleClick = () => {
@@ -44,11 +48,16 @@ const FoodDialogContainer = ({openFood, setOpenFood, orders, setOrders}) => {
           <DialogBannerLabel>{openFood.name}</DialogBannerLabel>
         </DialogBanner>
         <DialogContent>
-          {<QuantityInput quantity={quantity} />}
+          <QuantityInput quantity={quantity} />
           {openFood.section === 'Pizza' && (
             <>
               <h3>Would you like toppings? (Any for {formatPrice(0.5)})</h3>
               <Toppings {...toppings} />
+            </>
+          )}
+          {openFood.section === 'Drinks' && (
+            <>
+              <DrinksChoice openFood={openFood} choiceDrink={choiceDrink} />
             </>
           )}
         </DialogContent>

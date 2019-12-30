@@ -7,6 +7,11 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     h1, h2, h3 {
-    font-family: 'Righteous', cursive;
+      font-family: 'Righteous', cursive;
+    }
+    
+    input,
+    label {
+      cursor: pointer;
     }
 `;
