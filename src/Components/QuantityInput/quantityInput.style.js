@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {Title} from '../Styles/title';
-import {pizzaRed} from '../Styles/colors';
+import {Title} from '../../Styles/title';
+import {pizzaRed} from '../../Styles/colors';
 
 export const QuantityInputContainer = styled(Title)`
   display: flex;

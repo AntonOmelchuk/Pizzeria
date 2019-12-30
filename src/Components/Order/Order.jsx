@@ -5,6 +5,7 @@ import {
   OrderFooter,
   OrderItem,
   OrderItemContainer,
+  Toppings,
 } from './order.style';
 import {CheckoutButton} from './order.style';
 import {formatPrice} from '../Menu/dataFood';
@@ -33,6 +34,12 @@ const Order = React.memo(({orders}) => {
                 <div />
                 <div>{formatPrice(getTotalPrice(order))}</div>
               </OrderItem>
+              <Toppings>
+                {order.toppings
+                  .filter(topping => topping.checked)
+                  .map(topping => topping.name)
+                  .join(', ')}
+              </Toppings>
             </OrderItemContainer>
           ))}
           <OrderItemContainer>

@@ -9,17 +9,26 @@ import {
   DialogOverlay,
 } from './foodDialog.style';
 import {formatPrice} from '../Menu/dataFood';
-import QuantityInput from '../QuantityInput';
+import QuantityInput from '../QuantityInput/QuantityInput';
 import useQuantity from '../../Hooks/useQuantity';
+import Toppings from '../Toppings/Toppings';
+import {useToppings} from '../../Hooks/useToppings';
 
-export const getTotalPrice = order => order.price * order.quantity;
+export const getTotalPrice = order => {
+  const toppingsPrice = 0.5;
+  const toppingsTotalPrice =
+    order.toppings.filter(t => t.checked).length * toppingsPrice;
+  return order.quantity * (order.price + toppingsTotalPrice);
+};
 
 const FoodDialogContainer = ({openFood, setOpenFood, orders, setOrders}) => {
   const quantity = useQuantity(openFood && openFood.quantity);
+  const toppings = useToppings(openFood.toppings);
 
   const order = {
     ...openFood,
     quantity: quantity.value,
+    toppings: toppings.toppings,
   };
 
   const onHandleClick = () => {
@@ -34,7 +43,15 @@ const FoodDialogContainer = ({openFood, setOpenFood, orders, setOrders}) => {
         <DialogBanner img={openFood.img}>
           <DialogBannerLabel>{openFood.name}</DialogBannerLabel>
         </DialogBanner>
-        <DialogContent>{<QuantityInput quantity={quantity} />}</DialogContent>
+        <DialogContent>
+          {<QuantityInput quantity={quantity} />}
+          {openFood.section === 'Pizza' && (
+            <>
+              <h3>Would you like toppings? (Any for {formatPrice(0.5)})</h3>
+              <Toppings {...toppings} />
+            </>
+          )}
+        </DialogContent>
         <DialogFooter>
           <ConfirmButton onClick={onHandleClick}>
             Add to order: {formatPrice(getTotalPrice(order))}

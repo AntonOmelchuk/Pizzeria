@@ -34,6 +34,11 @@ export const OrderItem = styled(Title)`
   justify-content: space-between;
 `;
 
+export const Toppings = styled.div`
+  color: gray;
+  font-size: 10px;
+`;
+
 export const CheckoutButton = styled(CustomButton)``;
 
 export const OrderFooter = styled(DialogFooter)``;
