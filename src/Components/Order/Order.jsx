@@ -11,6 +11,11 @@ import {formatPrice} from '../Menu/dataFood';
 import {getTotalPrice} from '../FoodDialog/FoodDialog';
 
 const Order = React.memo(({orders}) => {
+  const total = orders.reduce(
+    (total, order) => total + getTotalPrice(order),
+    0
+  );
+
   return (
     <OrderContainer>
       {!orders.length ? (
@@ -30,6 +35,13 @@ const Order = React.memo(({orders}) => {
               </OrderItem>
             </OrderItemContainer>
           ))}
+          <OrderItemContainer>
+            <OrderItem>
+              <div />
+              <div>Total</div>
+              {formatPrice(total)}
+            </OrderItem>
+          </OrderItemContainer>
         </OrderContent>
       )}
       <OrderFooter>
