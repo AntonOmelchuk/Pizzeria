@@ -1,19 +1,29 @@
 {
   "files": {
-    "main.js": "/Pizzeria/static/js/main.7b2abfed.chunk.js",
-    "main.js.map": "/Pizzeria/static/js/main.7b2abfed.chunk.js.map",
+    "main.js": "/Pizzeria/static/js/main.57bfb601.chunk.js",
+    "main.js.map": "/Pizzeria/static/js/main.57bfb601.chunk.js.map",
     "runtime-main.js": "/Pizzeria/static/js/runtime-main.107b96ab.js",
     "runtime-main.js.map": "/Pizzeria/static/js/runtime-main.107b96ab.js.map",
-    "static/js/2.caa94e44.chunk.js": "/Pizzeria/static/js/2.caa94e44.chunk.js",
-    "static/js/2.caa94e44.chunk.js.map": "/Pizzeria/static/js/2.caa94e44.chunk.js.map",
+    "static/js/2.5841a917.chunk.js": "/Pizzeria/static/js/2.5841a917.chunk.js",
+    "static/js/2.5841a917.chunk.js.map": "/Pizzeria/static/js/2.5841a917.chunk.js.map",
     "index.html": "/Pizzeria/index.html",
-    "precache-manifest.bc10cd6580f901642741d82fb52afcc3.js": "/Pizzeria/precache-manifest.bc10cd6580f901642741d82fb52afcc3.js",
+    "precache-manifest.38de52688425e9cac6fa4e9b2062dc8b.js": "/Pizzeria/precache-manifest.38de52688425e9cac6fa4e9b2062dc8b.js",
     "service-worker.js": "/Pizzeria/service-worker.js",
-    "static/js/2.caa94e44.chunk.js.LICENSE": "/Pizzeria/static/js/2.caa94e44.chunk.js.LICENSE"
+    "static/js/2.5841a917.chunk.js.LICENSE": "/Pizzeria/static/js/2.5841a917.chunk.js.LICENSE",
+    "static/media/burger.jpeg": "/Pizzeria/static/media/burger.1dc20b1c.jpeg",
+    "static/media/chicken-fingers.jpeg": "/Pizzeria/static/media/chicken-fingers.7cb57907.jpeg",
+    "static/media/chicken-pizza.jpeg": "/Pizzeria/static/media/chicken-pizza.113f255a.jpeg",
+    "static/media/drinks.jpg": "/Pizzeria/static/media/drinks.b50a3b92.jpg",
+    "static/media/fries.jpeg": "/Pizzeria/static/media/fries.d48c6c98.jpeg",
+    "static/media/gyro.jpeg": "/Pizzeria/static/media/gyro.e383aa27.jpeg",
+    "static/media/healthy-pizza.jpeg": "/Pizzeria/static/media/healthy-pizza.e66b6751.jpeg",
+    "static/media/pizza.png": "/Pizzeria/static/media/pizza.b2c3232e.png",
+    "static/media/pizza2.jpeg": "/Pizzeria/static/media/pizza2.fe08d97c.jpeg",
+    "static/media/sandwich.jpeg": "/Pizzeria/static/media/sandwich.d365d8b4.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.107b96ab.js",
-    "static/js/2.caa94e44.chunk.js",
-    "static/js/main.7b2abfed.chunk.js"
+    "static/js/2.5841a917.chunk.js",
+    "static/js/main.57bfb601.chunk.js"
   ]
 }
