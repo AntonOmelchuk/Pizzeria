@@ -5,7 +5,7 @@ const DrinksChoice = ({openFood, choiceDrink}) => {
     <>
       <h3>Choose one</h3>
       {openFood.choices.map(choice => (
-        <>
+        <React.Fragment key={choice}>
           <input
             type='radio'
             id={choice}
@@ -15,7 +15,7 @@ const DrinksChoice = ({openFood, choiceDrink}) => {
             onChange={choiceDrink.onChange}
           />
           <label htmlFor={choice}>{choice} </label>
-        </>
+        </React.Fragment>
       ))}
     </>
   );

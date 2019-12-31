@@ -25,6 +25,17 @@ export const OrderContent = styled(DialogContent)`
 export const OrderItemContainer = styled.div`
   padding: 10px 0;
   border-bottom: 1px solid grey;
+
+  ${({editable}) =>
+    editable
+      ? `
+  &:hover {
+    cursor: pointer;
+      background-color: #e7e7e7;
+  }`
+      : `
+  pointer-events: none; 
+  `}
 `;
 
 export const OrderItem = styled(Title)`

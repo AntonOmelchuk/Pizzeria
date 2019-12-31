@@ -7,15 +7,21 @@ import {
   OrderItemContainer,
   Toppings,
 } from './order.style';
+
 import {CheckoutButton} from './order.style';
 import {formatPrice} from '../Menu/dataFood';
 import {getTotalPrice} from '../FoodDialog/FoodDialog';
 
-const Order = React.memo(({orders}) => {
+const Order = React.memo(({orders, setOrders, setOpenFood}) => {
   const total = orders.reduce(
     (total, order) => total + getTotalPrice(order),
     0
   );
+
+  const deleteOrder = index => {
+    const newOrder = orders.filter((_, i) => i !== index);
+    setOrders(newOrder);
+  };
 
   return (
     <OrderContainer>
@@ -24,14 +30,26 @@ const Order = React.memo(({orders}) => {
       ) : (
         <OrderContent>
           Your orders:
-          {orders.map(order => (
-            <OrderItemContainer key={order.id}>
-              <OrderItem>
+          {orders.map((order, index) => (
+            <OrderItemContainer key={index} editable>
+              <OrderItem
+                onClick={() => {
+                  setOpenFood({...order, index});
+                }}
+              >
                 <div>
                   <span>{order.quantity} &times;</span>
                 </div>
-                <div>{order.name}</div>
-                <div />
+                <div>{order.name === 'Drinks' ? order.choice : order.name}</div>
+                <div
+                  onClick={e => {
+                    e.stopPropagation();
+                    deleteOrder(index);
+                  }}
+                  style={{cursor: 'pointer'}}
+                >
+                  🗑
+                </div>
                 <div>{formatPrice(getTotalPrice(order))}</div>
               </OrderItem>
               <Toppings>

@@ -28,6 +28,10 @@ const FoodDialogContainer = ({openFood, setOpenFood, orders, setOrders}) => {
   const toppings = useToppings(openFood.toppings);
   const choiceDrink = useChoice(openFood.choice);
 
+  const isEdit = openFood.index > -1;
+
+  const checkSection = section => section === openFood.section;
+
   const order = {
     ...openFood,
     quantity: quantity.value,
@@ -35,9 +39,18 @@ const FoodDialogContainer = ({openFood, setOpenFood, orders, setOrders}) => {
     choice: choiceDrink.choice,
   };
 
+  const closeFoodDialog = () => setOpenFood();
+
+  const editOrder = () => {
+    const newOrders = [...orders];
+    newOrders[openFood.index] = order;
+    setOrders(newOrders);
+    closeFoodDialog();
+  };
+
   const onHandleClick = () => {
     setOrders([...orders, order]);
-    setOpenFood();
+    closeFoodDialog();
   };
 
   return (
@@ -49,21 +62,26 @@ const FoodDialogContainer = ({openFood, setOpenFood, orders, setOrders}) => {
         </DialogBanner>
         <DialogContent>
           <QuantityInput quantity={quantity} />
-          {openFood.section === 'Pizza' && (
+          {checkSection('Pizza') && (
             <>
               <h3>Would you like toppings? (Any for {formatPrice(0.5)})</h3>
               <Toppings {...toppings} />
             </>
           )}
-          {openFood.section === 'Drinks' && (
+          {checkSection('Drinks') && (
             <>
               <DrinksChoice openFood={openFood} choiceDrink={choiceDrink} />
             </>
           )}
         </DialogContent>
         <DialogFooter>
-          <ConfirmButton onClick={onHandleClick}>
-            Add to order: {formatPrice(getTotalPrice(order))}
+          <ConfirmButton
+            onClick={isEdit ? editOrder : onHandleClick}
+            disabled={checkSection('Drinks') && !choiceDrink.choice}
+          >
+            {' '}
+            {isEdit ? 'Edit order: ' : 'Add to order: '}
+            {formatPrice(getTotalPrice(order))}
           </ConfirmButton>
         </DialogFooter>
       </DialogContainer>

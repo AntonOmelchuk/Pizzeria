@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {Title} from './title';
-import {pizzaRed} from "./colors";
+import {pizzaRed} from './colors';
 
 export const CustomButton = styled(Title)`
   margin: 10px;
@@ -11,4 +11,12 @@ export const CustomButton = styled(Title)`
   background-color: ${pizzaRed};
   text-align: center;
   cursor: pointer;
+
+  ${({disabled}) =>
+    disabled &&
+    `
+    opactity: .5; 
+    background-color: grey; 
+    pointer-events: none; 
+  `}
 `;
