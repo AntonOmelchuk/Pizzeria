@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/Pizzeria/static/js/main.57bfb601.chunk.js",
-    "main.js.map": "/Pizzeria/static/js/main.57bfb601.chunk.js.map",
+    "main.js": "/Pizzeria/static/js/main.c9170f8c.chunk.js",
+    "main.js.map": "/Pizzeria/static/js/main.c9170f8c.chunk.js.map",
     "runtime-main.js": "/Pizzeria/static/js/runtime-main.107b96ab.js",
     "runtime-main.js.map": "/Pizzeria/static/js/runtime-main.107b96ab.js.map",
     "static/js/2.5841a917.chunk.js": "/Pizzeria/static/js/2.5841a917.chunk.js",
     "static/js/2.5841a917.chunk.js.map": "/Pizzeria/static/js/2.5841a917.chunk.js.map",
     "index.html": "/Pizzeria/index.html",
-    "precache-manifest.38de52688425e9cac6fa4e9b2062dc8b.js": "/Pizzeria/precache-manifest.38de52688425e9cac6fa4e9b2062dc8b.js",
+    "precache-manifest.d2dfc3eb1346cdd9d4ac19f51d766032.js": "/Pizzeria/precache-manifest.d2dfc3eb1346cdd9d4ac19f51d766032.js",
     "service-worker.js": "/Pizzeria/service-worker.js",
     "static/js/2.5841a917.chunk.js.LICENSE": "/Pizzeria/static/js/2.5841a917.chunk.js.LICENSE",
     "static/media/burger.jpeg": "/Pizzeria/static/media/burger.1dc20b1c.jpeg",
@@ -24,6 +24,6 @@
   "entrypoints": [
     "static/js/runtime-main.107b96ab.js",
     "static/js/2.5841a917.chunk.js",
-    "static/js/main.57bfb601.chunk.js"
+    "static/js/main.c9170f8c.chunk.js"
   ]
 }
