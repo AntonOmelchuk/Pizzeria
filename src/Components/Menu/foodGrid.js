@@ -15,7 +15,7 @@ export const FoodLabel = styled(Title)`
 `;
 
 export const FoodItem = styled.div`
-  height: 153px;
+  height: 253px;
   padding: 10px;
   margin: 5px 0 0 0;
 
