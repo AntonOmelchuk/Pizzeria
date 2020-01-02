@@ -9,10 +9,12 @@ import Order from './Components/Order/Order';
 import useOpenFood from './Hooks/useOpenFood';
 import useOrder from './Hooks/useOrder';
 import useTitle from './Hooks/useTitle';
+import {useAuthentication} from './Hooks/useAuthenticatoin';
 
 const App = () => {
   const openFood = useOpenFood();
   const orders = useOrder();
+  const auth = useAuthentication();
 
   useTitle(openFood);
 
@@ -20,7 +22,7 @@ const App = () => {
     <>
       <GlobalStyle />
       <FoodDialog />
-      <Navbar />
+      <Navbar {...auth} />
       <Banner />
       <FoodDialog {...openFood} {...orders} />
       <Menu {...openFood} />

@@ -15,9 +15,38 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans|Righteous&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/dd4f96c637.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"
+    ></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAhMyGjB7_w0P4wi9vuJCrDeTz9_SPX4bQ',
+        authDomain: 'rockitpizza-f5ebd.firebaseapp.com',
+        databaseURL: 'https://rockitpizza-f5ebd.firebaseio.com',
+        projectId: 'rockitpizza-f5ebd',
+        storageBucket: 'rockitpizza-f5ebd.appspot.com',
+        messagingSenderId: '376863861886',
+        appId: '1:376863861886:web:0c5bb28e3bd4b3b0083c2f',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>

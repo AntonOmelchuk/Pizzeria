@@ -1,7 +1,7 @@
 import React from 'react';
-import {Logo, NavbarContainer} from './navbar.style';
+import {LoginButton, Logo, NavbarContainer, UserStatus} from './navbar.style';
 
-const Navbar = () => {
+const Navbar = ({login, logout, loggedIn}) => {
   return (
     <NavbarContainer>
       <Logo>
@@ -10,6 +10,22 @@ const Navbar = () => {
           🍕
         </span>
       </Logo>
+      <UserStatus>
+        <LoginButton>
+          {loggedIn === 'loading' ? (
+            'Loading...'
+          ) : loggedIn ? (
+            <>
+              <span style={{cursor: 'auto'}}> Hi {loggedIn.displayName} </span>
+              <i className='fas fa-sign-in-alt' onClick={logout} />
+            </>
+          ) : (
+            <span onClick={login}>
+              Log In <i className='fas fa-sign-in-alt' />
+            </span>
+          )}
+        </LoginButton>
+      </UserStatus>
     </NavbarContainer>
   );
 };
