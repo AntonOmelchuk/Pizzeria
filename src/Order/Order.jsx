@@ -1,16 +1,17 @@
 import React from 'react';
 
-import {formatPrice} from '../Data/FoodData';
-import {getPrice} from '../FoodDialog/FoodDialog';
 import {DetailItem, OrderContainer, OrderContent, OrderItem, OrderStyled} from './order.style';
 import {ConfirmButton, DialogFooter} from '../FoodDialog/foodDialog.style';
 
-export function Order({orders, setOrders, setOpenFood}) {
-  const subtotal = orders.reduce((total, order) => {
+import {formatPrice} from '../Data/FoodData';
+import {getPrice} from '../FoodDialog/FoodDialog';
+
+const database = window.firebase.database();
+
+export const Order = ({orders, setOrders, setOpenFood, login, authenticated}) => {
+  const total = orders.reduce((total, order) => {
     return total + getPrice(order);
   }, 0);
-  const tax = subtotal * 0.07;
-  const total = subtotal + tax;
 
   const deleteItem = index => {
     const newOrders = [...orders];
@@ -18,10 +19,40 @@ export function Order({orders, setOrders, setOpenFood}) {
     setOrders(newOrders);
   };
 
+  const sendOrder = (orders, {email, displayName}) => {
+    const orderRef = database.ref('orders').push();
+
+    const newOrder = orders.map(order => {
+      return Object.keys(order).reduce((acc, orderKey) => {
+        if(!order[orderKey]) {
+          return acc
+        }
+        if(orderKey === 'toppings') {
+            return {
+              ...acc,
+              [orderKey]: order[orderKey]
+                .filter(({checked}) => checked)
+                .map(({name}) => name)
+            }
+        }
+
+        return {
+          ...acc,
+          [orderKey]: order[orderKey]
+        }
+      }, {})});
+
+    orderRef.set({
+      order: newOrder,
+      email,
+      displayName
+    })
+  };
+
   return (
     <OrderStyled>
       {orders.length === 0 ? (
-        <OrderContent>Your order's looking pretty empty.</OrderContent>
+        <OrderContent>Your order is empty.</OrderContent>
       ) : (
         <OrderContent>
           {' '}
@@ -58,16 +89,6 @@ export function Order({orders, setOrders, setOpenFood}) {
           <OrderContainer>
             <OrderItem>
               <div />
-              <div>Sub-Total</div>
-              <div>{formatPrice(subtotal)}</div>
-            </OrderItem>
-            <OrderItem>
-              <div />
-              <div>Tax</div>
-              <div>{formatPrice(tax)}</div>
-            </OrderItem>
-            <OrderItem>
-              <div />
               <div>Total</div>
               <div>{formatPrice(total)}</div>
             </OrderItem>
@@ -75,7 +96,13 @@ export function Order({orders, setOrders, setOpenFood}) {
         </OrderContent>
       )}
       <DialogFooter>
-        <ConfirmButton>Checkout</ConfirmButton>
+        <ConfirmButton onClick={() => {
+          if(authenticated) {
+            sendOrder(orders, authenticated)
+          } else {
+            login()
+          }
+          }}>Checkout</ConfirmButton>
       </DialogFooter>
     </OrderStyled>
   );

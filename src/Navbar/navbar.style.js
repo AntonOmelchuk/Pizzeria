@@ -27,4 +27,5 @@ export const UserStatus = styled.div`
 
 export const LoginButton = styled.span`
   cursor: pointer;
+  margin-left: 12px;
 `;

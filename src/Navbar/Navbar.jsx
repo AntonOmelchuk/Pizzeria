@@ -2,7 +2,7 @@ import React from 'react';
 
 import {LoginButton, Logo, NavbarStyled, UserStatus} from './navbar.style';
 
-export const Navbar = ({login, authenticated}) => {
+export const Navbar = ({login, logout, authenticated}) => {
 
   return (
     <NavbarStyled>
@@ -14,7 +14,8 @@ export const Navbar = ({login, authenticated}) => {
       </Logo>
       <UserStatus>
         {authenticated === 'loading' ? 'loading...' :
-          (authenticated ? `Hi, ${authenticated.displayName.split(' ')[0]}!` : (
+          (authenticated ? (<>{`Hi, ${authenticated.displayName.split(' ')[0]}!`}
+            <LoginButton onClick={logout}>Log Out</LoginButton></>) : (
             <LoginButton onClick={login}>Log In</LoginButton>
           ))}
       </UserStatus>
