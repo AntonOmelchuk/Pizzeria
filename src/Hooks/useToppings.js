@@ -5,16 +5,15 @@ export const useToppings = defaultTopping => {
     defaultTopping || getDefaultToppings()
   );
 
-  const checkTopping = id => {
+  const checkTopping = index => {
     const newToppings = [...toppings];
-    newToppings[id].checked = !newToppings[id].checked;
+    newToppings[index].checked = !newToppings[index].checked;
     setToppings(newToppings);
   };
 
   return {
-    toppings,
-    setToppings,
     checkTopping,
+    toppings,
   };
 };
 
@@ -33,8 +32,7 @@ const toppingsList = [
 ];
 
 const getDefaultToppings = () => {
-  return toppingsList.map((topping, index) => ({
-    id: index,
+  return toppingsList.map(topping => ({
     name: topping,
     checked: false,
   }));

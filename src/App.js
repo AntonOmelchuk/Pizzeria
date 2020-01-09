@@ -1,32 +1,32 @@
 import React from 'react';
 
-import {GlobalStyle} from './Styles/globalStyle';
-import Navbar from './Components/Navbar/Navbar';
-import Banner from './Components/Banner/Banner';
-import Menu from './Components/Menu/Menu';
-import {FoodDialog} from './Components/FoodDialog/FoodDialog';
-import Order from './Components/Order/Order';
-import useOpenFood from './Hooks/useOpenFood';
-import useOrder from './Hooks/useOrder';
-import useTitle from './Hooks/useTitle';
-import {useAuthentication} from './Hooks/useAuthenticatoin';
+import {GlobalStyle} from './Styles/GlobalStyle';
+
+import {Navbar} from './Navbar/Navbar';
+import {Order} from './Order/Order';
+import {Banner} from './Banner/Banner';
+import {Menu} from './Menu/Menu';
+import {FoodDialog} from './FoodDialog/FoodDialog';
+
+import {useOpenFood} from './Hooks/useOpenFood';
+import {useOrders} from './Hooks/useOrders';
+import {useTitle} from './Hooks/useTitle';
+import {useAuthentication} from './Hooks/useAuthentication';
 
 const App = () => {
   const openFood = useOpenFood();
-  const orders = useOrder();
+  const orders = useOrders();
   const auth = useAuthentication();
-
-  useTitle(openFood);
+  useTitle({...openFood, ...orders});
 
   return (
     <>
       <GlobalStyle />
-      <FoodDialog />
-      <Navbar {...auth} />
-      <Banner />
       <FoodDialog {...openFood} {...orders} />
-      <Menu {...openFood} />
+      <Navbar {...auth} />
       <Order {...orders} {...openFood} />
+      <Banner />
+      <Menu {...openFood} />
     </>
   );
 };

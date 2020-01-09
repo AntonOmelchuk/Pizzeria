@@ -1,16 +1,15 @@
 import {useState} from 'react';
 
-const useQuantity = () => {
-  const [value, setValue] = useState(1);
+export const useQuantity = defaultQuantity => {
+  const [value, setValue] = useState(defaultQuantity || 1);
 
   const onChange = e => {
-    if (!(+e.target.value >= 0)) {
+    if (!(+e.target.value >= 1)) {
       setValue(1);
       return;
     }
-
     setValue(+e.target.value);
-  };
+  }
 
   return {
     value,
@@ -18,5 +17,3 @@ const useQuantity = () => {
     onChange,
   };
 };
-
-export default useQuantity;

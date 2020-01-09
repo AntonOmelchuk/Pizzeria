@@ -1,12 +1,9 @@
 import {useState} from 'react';
 
-const useOpenFood = () => {
+export const useOpenFood = () => {
   const [openFood, setOpenFood] = useState();
-
   return {
     openFood,
     setOpenFood,
   };
 };
-
-export default useOpenFood;

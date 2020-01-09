@@ -1,12 +1,14 @@
 import {useState} from 'react';
 
 export const useChoice = defaultChoice => {
-  const [choice, setChoice] = useState(defaultChoice);
+  const [value, setValue] = useState(defaultChoice);
 
-  const onChange = e => setChoice(e.target.value);
+  const onChange = e => {
+    setValue(e.target.value);
+  }
 
   return {
-    choice,
+    value,
     onChange,
   };
 };
