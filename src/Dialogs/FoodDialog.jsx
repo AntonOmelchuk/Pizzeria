@@ -15,7 +15,7 @@ import {
   DialogContent,
   DialogFooter,
   DialogShadow,
-} from './foodDialog.style';
+} from './dialog.style';
 
 const pricePerTopping = 0.5;
 

@@ -15,8 +15,8 @@ export const Navbar = ({login, logout, authenticated}) => {
       <UserStatus>
         {authenticated === 'loading' ? 'loading...' :
           (authenticated ? (<>{`Hi, ${authenticated.displayName.split(' ')[0]}!`}
-            <LoginButton onClick={logout}>Log Out</LoginButton></>) : (
-            <LoginButton onClick={login}>Log In</LoginButton>
+            <LoginButton onClick={logout}>LogOut</LoginButton></>) : (
+            <LoginButton onClick={login}>LogIn</LoginButton>
           ))}
       </UserStatus>
     </NavbarStyled>

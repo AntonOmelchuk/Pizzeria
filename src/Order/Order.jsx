@@ -1,14 +1,21 @@
 import React from 'react';
 
 import {DetailItem, OrderContainer, OrderContent, OrderItem, OrderStyled} from './order.style';
-import {ConfirmButton, DialogFooter} from '../FoodDialog/foodDialog.style';
+import {ConfirmButton, DialogFooter} from '../Dialogs/dialog.style';
 
 import {formatPrice} from '../Data/FoodData';
-import {getPrice} from '../FoodDialog/FoodDialog';
+import {getPrice} from '../Dialogs/FoodDialog';
 
 const database = window.firebase.database();
 
-export const Order = ({orders, setOrders, setOpenFood, login, authenticated}) => {
+export const Order = ({
+                        orders,
+                        setOrders,
+                        setOpenFood,
+                        login,
+                        authenticated,
+                        setOpenOrderDialog
+}) => {
   const total = orders.reduce((total, order) => {
     return total + getPrice(order);
   }, 0);
@@ -95,15 +102,16 @@ export const Order = ({orders, setOrders, setOpenFood, login, authenticated}) =>
           </OrderContainer>
         </OrderContent>
       )}
-      <DialogFooter>
+      {orders.length > 0 && <DialogFooter>
         <ConfirmButton onClick={() => {
           if(authenticated) {
-            sendOrder(orders, authenticated)
+            setOpenOrderDialog(true);
+            sendOrder(orders, authenticated);
           } else {
             login()
           }
-          }}>Checkout</ConfirmButton>
-      </DialogFooter>
+        }}>Checkout</ConfirmButton>
+      </DialogFooter>}
     </OrderStyled>
   );
-}
+};

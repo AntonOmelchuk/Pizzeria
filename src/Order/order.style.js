@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {DialogContent} from '../FoodDialog/foodDialog.style';
+import {DialogContent} from '../Dialogs/dialog.style';
 
 export const OrderItem = styled.div`
   padding: 10px 0;
